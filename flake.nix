@@ -37,6 +37,6 @@
         };
       });
 
-    inherit lib;
+    inherit (original) lib checks htmlDocs nixosModules devShells; # no formatter
   };
 }
