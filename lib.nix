@@ -10,7 +10,7 @@ rec {
 
   finalArgs = {
     flake,
-    extraArgs ? [],
+    extraArgs ? {},
     defaultSystem ? null,
   }: let
     argsList =
