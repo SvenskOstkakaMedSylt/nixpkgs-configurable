@@ -1,6 +1,8 @@
 rec {
+  is-nixpkgs-configurable = true;
+
   chainFrom = flake: (
-    if flake ? inputs.nixpkgs
+    if flake.outputs.flakeLib.is-nixpkgs-configurable or false # Note that  or false  is not a logical operation here
     then chainFrom flake.inputs.nixpkgs ++ [flake]
     else []
   );
@@ -21,7 +23,7 @@ rec {
     overlays =
       builtins.concatMap (args: args.overlays or []) argsList;
 
-    crossOverlays = builtins.concatMap (args: args.crossOverLays or []) argsList;
+    crossOverlays = builtins.concatMap (args: args.crossOverlays or []) argsList;
 
     configModules = builtins.concatMap (args:
       if args ? config
@@ -56,6 +58,14 @@ rec {
       if builtins.length crossOverlays == 0
       then {}
       else {inherit crossOverlays;}
+    )
+    // (
+      builtins.foldl' (x: y: x // y) {} (
+        map (
+          x: builtins.removeAttrs x ["config" "overlays" "crossOverlays"]
+        )
+        argsList
+      )
     );
 
   rawPackages = parameters:
