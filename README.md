@@ -35,8 +35,11 @@ WARNING: this is intended for personal use
         nixpkgs-configurable = {
             url = "github:SvenskOstkakaMedSylt/nixpkgs-configurable";
             inputs = {
-                args.url = ./args.nix;
-                nixpkgs = "nixpkgs";
+                args = {
+                    flake = false;
+                    url = ./args.nix;
+                };
+                nixpkgs.follows = "nixpkgs";
             };
         };
 
@@ -68,6 +71,10 @@ with `./args.nix`:
 - Allows the nixpkgs arguments to be overwritten by other flakes
 - Allows arguments to be inherited from other such projects by taking their
   nixpkgs-configurable instance since they compose
+
+## Special parameters
+
+???
 
 ## Features to be implemented
 
