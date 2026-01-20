@@ -1,3 +1,5 @@
+WARNING: this is intended for personal use
+
 # Example usage
 
 ## Old flake
