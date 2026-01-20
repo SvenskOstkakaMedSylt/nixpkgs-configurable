@@ -41,7 +41,8 @@
     inherit (original) lib checks htmlDocs nixosModules devShells; # no formatter
 
     # debug
-    error = flakeLib.finalArgs {
+    /*
+       error = flakeLib.finalArgs {
       flake = self;
       defaultSystem = "x86-64_linux";
       extraArgs = {
@@ -55,5 +56,6 @@
       };
     };
     inherit self;
+    */
   };
 }
