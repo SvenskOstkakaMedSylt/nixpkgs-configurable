@@ -67,4 +67,11 @@ with `./args.nix`:
 - Allows arguments to be inherited from other such projects by taking their
   nixpkgs-configurable instance since they compose
 
-# DiaDOIJAWODIJODJ stdEnvStages, localsystem, and crossSystem handling ADAAAAAAAAAAAAAAAAAAAAAAAAA, what order should overwrites happen in
+## Features to be implemented
+
+Configuration of the following parameters ( #TODO double check that this is the
+case )
+
+- stdEnvStages
+- localsystem
+- crossSystem
