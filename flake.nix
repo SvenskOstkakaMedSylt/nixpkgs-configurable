@@ -22,7 +22,10 @@
     forEachSystem = lib.genAttrs lib.systems.flakeExposed;
   in {
     inherit flakeLib;
-    args = import self.inputs.args;
+    args =
+      if self.inputs.args ? _type && self.inputs.args._type == "flake"
+      then self.inputs.args.args
+      else import self.inputs.args;
 
     legacyPackages = forEachSystem (system:
       rawPackages {

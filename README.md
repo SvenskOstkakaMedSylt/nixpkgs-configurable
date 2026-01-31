@@ -64,6 +64,8 @@ with `./args.nix`:
 }
 ```
 
+Note that instead of `./args.nix`, one can use a flake with an `args` output.
+
 ## What does this do
 
 - Saves 1 nixpkgs invocation as home manager now uses the same nixpkgs import as
